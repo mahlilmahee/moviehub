@@ -12,6 +12,7 @@ import {
 import AllMovies from './Component/Movies/AllMovies';
 import Tv from './Component/Tv/Tv';
 import Header from './Component/Header/Header';
+import SingleMovie from './Component/MovieId/SingleMovie';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -23,6 +24,7 @@ function App() {
 
   <Route path='/' exact element={<Home></Home>}></Route>
   <Route path='/movies' exact element={<AllMovies></AllMovies>}></Route>
+  <Route path='/movies/:movieId' exact element={<SingleMovie></SingleMovie>}></Route>
   <Route path='/tvseries' exact element={<Tv></Tv>}></Route>
  </Routes>
 </Router>

@@ -1,6 +1,4 @@
-
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -11,32 +9,23 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-const LatestTv = () => {
+import { Link, useNavigate } from 'react-router-dom';
+const Latestone = ({data}) => {
+    const {id}=data;
+    // console.log(id)
+    const navigate=useNavigate()
+const datasd=()=>{
+    navigate(`/movies/${id}`)
+}
 
-    const [getnew,setGetnew]=useState([]);
-    
-    useEffect(()=>{
-        fetch('https://api.themoviedb.org/3/tv/popular?api_key=51129d3fdde19b2b33dbc01b5aeb33bc&language=en-US&page=1')
-        .then(res=>res.json())
-        .then(data=>setGetnew(data.results))
-    },[])
     return (
-        <div>
-           <h2> Watch Out the Latest Movies </h2>
-
-
-           <Grid sx={{margin:'10px auto'}} justifyContent="center" alignItems="center" container spacing={1}>
- 
-           
-            {
-                getnew.map(data=><> 
-                <Grid item xs={12} md={3} lg={4}>
+        <Grid item xs={12} md={3} lg={4}>
                   <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
         image={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
-        alt="Famous Tv show"
+        alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -49,13 +38,16 @@ const LatestTv = () => {
       </CardContent>
       <CardActions>
         {/* <Button size="small">Share</Button> */}
-        <Button size="small" variant="contained">See Details</Button>
+       <Button size="small" onClick={()=>{datasd()}} variant="contained">
+        
+        See Details
+        
+        </Button>
+
       </CardActions>
     </Card>
-               </Grid>   </>)
-            }</Grid>
-        </div>
+               </Grid>
     );
 };
 
-export default LatestTv;
+export default Latestone;

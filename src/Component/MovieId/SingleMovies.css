@@ -1,0 +1,18 @@
+.bghover{
+    position:absolute;
+    width: 50%;
+    top:100px;
+    color:white;
+    right:00px;
+    background-color:rgba(5, 3, 5, 0.5);
+    border-radius: 10px;
+    visibility: hidden;
+    padding: 10px;
+}
+.main{
+    position: relative;
+}
+
+.special{
+    visibility: visible;
+}

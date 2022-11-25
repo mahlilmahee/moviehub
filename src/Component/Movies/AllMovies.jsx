@@ -9,6 +9,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { Link } from 'react-router-dom';
+// import { Link } from '@mui/material';
 
 const AllMovies = () => {
 const [getnew,setGetnew]=useState([]);
@@ -55,7 +57,8 @@ return (
   </CardContent>
   <CardActions>
     {/* <Button size="small">Share</Button> */}
-    <Button size="small" variant="contained">See Details</Button>
+   <Link to='/movies/movieId'>    <Button size="small" variant="contained">See Details</Button>
+   </Link>
   </CardActions>
 </Card>
            </Grid>   </>)
