@@ -19,15 +19,17 @@ const datasd=()=>{
 }
 
     return (
-        <Grid item xs={12} md={3} lg={4}>
+        <Grid item xs={12} md={3} lg={2}>
+          
+           <Button size="small" onClick={()=>{datasd()}}>
                   <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="160"
         image={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
         alt="green iguana"
       />
-      <CardContent>
+      {/* <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {data.title}
         </Typography>
@@ -35,17 +37,17 @@ const datasd=()=>{
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography> */}
-      </CardContent>
+      {/* </CardContent> */} 
       <CardActions>
         {/* <Button size="small">Share</Button> */}
-       <Button size="small" onClick={()=>{datasd()}} variant="contained">
+      
         
-        See Details
+      
         
-        </Button>
+       
 
       </CardActions>
-    </Card>
+    </Card> </Button>
                </Grid>
     );
 };

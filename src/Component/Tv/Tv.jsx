@@ -13,13 +13,7 @@ import Grid from '@mui/material/Grid';
 const Tv = () => {
     const [getnew,setGetnew]=useState([]);
     
-    const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    }));
+
     
     useEffect(()=>{
         fetch('https://api.themoviedb.org/3/account/{account_id}/favorite/movies?api_key=51129d3fdde19b2b33dbc01b5aeb33bc&language=en-US&sort_by=created_at.asc&page=1')
