@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import './slider.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Skeleton } from '@mui/material';
+
 
 
 
@@ -19,8 +21,8 @@ const Slider = () => {
        
 
  <Carousel autoPlay={true} infiniteLoop={true} >
-       { 
-    data.map((single,i)=><>
+       { data ? 
+data.map((single,i)=><>
     <div>
         <img src={`https://image.tmdb.org/t/p/original${single.backdrop_path}`}   alt="picture" />
         <div className="divseconds" style={{width:"60%", fontWidth:'600', fontSize:'1.3rem', position:'absolute',left:'10px',top:'340px',color:"white"}}>
@@ -32,6 +34,11 @@ const Slider = () => {
     </div>
    
         </>)
+        
+:   
+ <Skeleton  sx={{ bgcolor: 'red.900' ,margin:'3px auto' }}
+variant="rectangular" width={910} height={508} />
+  
   }
         </Carousel>
       

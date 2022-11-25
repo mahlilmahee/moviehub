@@ -8,8 +8,11 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import StarRatings from 'react-star-ratings';
+import './latestone.css'
 import Grid from '@mui/material/Grid';
 import { Link, useNavigate } from 'react-router-dom';
+import { Skeleton } from '@mui/material';
 const Latestone = ({data}) => {
     const {id}=data;
     // console.log(id)
@@ -22,30 +25,29 @@ const datasd=()=>{
         <Grid item xs={12} md={3} lg={2}>
           
            <Button size="small" onClick={()=>{datasd()}}>
-                  <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
+                  <Card sx={{ maxWidth: 345 , padding:0}}>
+      
+      {
+        data.backdrop_path ? 
+           <CardMedia
         component="img"
         height="160"
         image={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
         alt="green iguana"
-      />
-      {/* <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {data.title}
-        </Typography>
-        {/* <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography> */}
-      {/* </CardContent> */} 
+      /> :<Skeleton
+      variant="rectangular" width={210} height={118} />
+      }
+   
+   <div className="latestone">
+    <p>{data.title}</p>
+    <StarRatings
+        rating={data.vote_average/2}
+        starDimension="15px"
+        starSpacing="2px"
+        starRatedColor='black'
+      />({data.vote_average/2})
+   </div>
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
-      
-        
-      
-        
-       
-
       </CardActions>
     </Card> </Button>
                </Grid>

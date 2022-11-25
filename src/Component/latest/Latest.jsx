@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
 import Latestone from './LatestOne/Latestone';
+import Skeleton from 'react-loading-skeleton';
 const Latest = () => {
 
     const [getnew,setGetnew]=useState([]);
@@ -30,15 +31,16 @@ const Item = styled(Paper)(({ theme }) => ({
     },[])
     return (
         <div>
-           <h2> Watch Out the Latest Movies </h2>
+           <h2> Watch Out the Top Rated Movies </h2>
 
 
            <Grid sx={{margin:'10px auto'}} justifyContent="center" alignItems="center" container spacing={1}>
  
            
             {
-                getnew.map((data,e)=><Latestone data={data} key={e} ></Latestone>)
-            }</Grid>
+             getnew ? getnew.map((data,e)=><Latestone data={data} key={e} ></Latestone>) : <Skeleton count={10} />
+            }
+            </Grid>
         </div>
     );
 };

@@ -9,50 +9,42 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { Skeleton } from '@mui/material';
 
 const Tv = () => {
     const [getnew,setGetnew]=useState([]);
-    
-
-    
+  
     useEffect(()=>{
-        fetch('https://api.themoviedb.org/3/account/{account_id}/favorite/movies?api_key=51129d3fdde19b2b33dbc01b5aeb33bc&language=en-US&sort_by=created_at.asc&page=1')
+        fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=51129d3fdde19b2b33dbc01b5aeb33bc&language=en-US&page=10')
         .then(res=>res.json())
         .then(data=>setGetnew(data.results))
-    },[])
+    },[getnew])
     return (
         <div>
-           <h2> Watch Out the Latest Movies </h2>
+           {/* <h2 style={{margin:'10px auto 10px '}}> Watch Out the Latest Movies </h2> */}
     
     
-           <Grid sx={{margin:'10px auto'}} justifyContent="center" alignItems="center" container spacing={1}>
+           <Grid sx={{margin:'60px auto'}} justifyContent="center" alignItems="center" container spacing={1}>
     
            
             {
-                getnew?.map(data=><> 
-                <Grid item xs={12} md={3} lg={4}>
+             getnew ?    getnew?.map(data=><> 
+                <Grid item xs={16} md={3} lg={2}>
                   <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
+    { data.backdrop_path ?   <CardMedia
         component="img"
-        height="140"
+        height="190"
         image={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
         alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {data.title}
-        </Typography>
-        {/* <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography> */}
-      </CardContent>
+      />: <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+      }
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
-        <Button size="small" variant="contained">See Details</Button>
+     
+        {/* <Button size="small" variant="contained">See Details</Button> */}
       </CardActions>
     </Card>
-               </Grid>   </>)
+               </Grid>   </>) :  <Skeleton  sx={{ bgcolor: 'red.900' ,margin:'3px auto' }}
+  variant="rectangular" width={910} height={508} />
             }</Grid>
         </div>
     );

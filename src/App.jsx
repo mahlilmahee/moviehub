@@ -14,7 +14,7 @@ import Tv from './Component/Tv/Tv';
 import Header from './Component/Header/Header';
 import SingleMovie from './Component/MovieId/SingleMovie';
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <div className="App">
