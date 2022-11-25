@@ -40,12 +40,15 @@ const datasd=()=>{
    
    <div className="latestone">
     <p>{data.title}</p>
-    <StarRatings
+ <div className="start">
+<div> <StarRatings
         rating={data.vote_average/2}
         starDimension="15px"
         starSpacing="2px"
         starRatedColor='black'
-      />({data.vote_average/2})
+      /></div><p>({data.vote_average/2})</p>
+ </div>
+ <p>ReleaseDate:{data.release_date}</p>
    </div>
       <CardActions>
       </CardActions>
